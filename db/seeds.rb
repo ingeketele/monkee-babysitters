@@ -1,6 +1,6 @@
 puts 'cleaning database'
-User.destroy_all
 Babysitter.destroy_all
+User.destroy_all
 
 puts 'creating users'
 
