@@ -14,7 +14,7 @@
         </div>
 
         <div class="profile-nav">
-          <div class="nav-menu active">
+          <div class="nav-menu">
             <%= link_to "BIO", babysitter_path(@babysitter) %>
           </div>
           <div class="nav-menu">
@@ -23,28 +23,34 @@
           <div class="nav-menu">
             <a href="#">REVIEWS</a>
           </div>
-          <div class="nav-menu">
+          <div class="nav-menu active">
             <%= link_to "BOOKINGS", babysitter_bookings_path(@babysitter) %>
           </div>
         </div>
       </div>
 
       <div class="card-content">
-        <p><%= @babysitter.biography %></p>
 
-        <div class="details">
-          <div class="age">
-            <p>Age: <%= @babysitter.age %></p>
-          </div>
+        <% @bookings.each do |booking| %>
 
-          <div class="location">
-            <% if current_user.address %>
-              <p><i class="fas fa-map-marker-alt"></i> <%= current_user.distance_from(@babysitter.user.address).to_i %> km</p>
-            <% else %>
-              <p><i class="fas fa-map-marker-alt"></i> <%= @babysitter.user.address %></p>
-            <% end %>
-          </div>
-        </div>
+          <% pending_bookings = [] %>
+          <% confirmed_bookings = [] %>
+          <% denied_bookings = [] %>
+
+          <% if booking.status == "pending" %>
+            <% pending_bookings << booking %>
+            <p>You have <%= pluralize(pending_bookings.count, 'booking') %> pending with <%= @babysitter.user.first_name %> for</p>
+            <ul>
+              <% pending_bookings.each do |p_booking| %>
+                <li>from <%= p_booking.start_time %> until <%= p_booking.start_time + p_booking.duration_per_hour.hours %></li>
+              <% end %>
+            </ul>
+          <% elsif booking.status == "confirmed" %>
+            <% confirmed_bookings << booking %>
+            <p>You have <%= pluralize(pending_bookings.count, 'booking') %> confirmed with <%= @babysitter.user.first_name %></p>
+          <% end %>
+
+        <% end %>
 
       </div>
     </div>
