@@ -31,6 +31,33 @@ users.each do |user|
 end
 
 puts "created #{Babysitter.count} babysitters"
+puts 'creating bookings'
+
+babysitters = Babysitter.all
+babysitters.each do |babysitter|
+  Booking.create!({
+    user_id: babysitter.user_id,
+    babysitter_id: babysitter.id,
+    start_time: Time.now + 2.hours,
+    duration_per_hour: 2,
+    price_per_hour: babysitter.price_per_hour,
+    status: "pending"
+  })
+end
+
+puts "created #{Booking.count} bookings"
+puts 'creating reviews'
+
+bookings = Booking.all
+bookings.each do |booking|
+  Review.create!({
+    booking_id: booking.id,
+    rating: (1..5).to_a.sample,
+    comment: Faker::Lorem.paragraph
+  })
+end
+
+puts "created #{Review.count} reviews"
 
 puts "Finished!"
 
