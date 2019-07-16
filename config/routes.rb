@@ -3,8 +3,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resource :dashboard, only: [:show]
   resources :babysitters, only: [:index, :show] do
     resources :bookings, only: [:create]
   end
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :bookings, only: [] do
+    resources :reviews, only: [:new, :create]
+  end
 end
