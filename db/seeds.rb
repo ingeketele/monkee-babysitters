@@ -8,7 +8,7 @@ puts 'creating users'
   User.create!({
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: Faker::Address.full_address,
+    address: Faker::Address.city,
     email: Faker::Internet.email,
     password: Faker::Internet.password
   })
@@ -21,7 +21,7 @@ users = User.all
 users.each do |user|
   Babysitter.create!({
     user_id: user.id,
-    biography: Faker::Lorem.paragraph,
+    biography: Faker::Lorem.sentence(8),
     birthdate: Faker::Date.birthday(16, 65),
     price_per_hour: (100..500).to_a.sample
   })

@@ -1,7 +1,5 @@
 class BabysittersController < ApplicationController
   def index
-  end
-
-  def show
+    @babysitters = Babysitter.all
   end
 end

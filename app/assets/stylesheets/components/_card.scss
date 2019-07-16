@@ -1,0 +1,36 @@
+.card-deck {
+  margin-bottom: 16px
+}
+
+.card-footer {
+  padding: 0.75rem 1.25rem;
+  padding-top: 0.75rem;
+  padding-right: 1.25rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-footer p {
+  margin: 0;
+}
+
+.price p {
+  font-size: 13px;
+}
+
+.ratings {
+  color: #FFB300;
+  display: flex;
+  justify-content: center;
+}
+
+.avatar-text-center {
+  text-align: center;
+  border-bottom: 1px solid #F0F0F0;
+}
+
+
