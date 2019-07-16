@@ -12,7 +12,8 @@ cities.each do |city|
     last_name: Faker::Name.last_name,
     address: "#{city}",
     email: Faker::Internet.email,
-    password: Faker::Internet.password
+    password: Faker::Internet.password,
+    avatar: 'https://source.unsplash.com/360x360/?face'
   })
 end
 
