@@ -2,13 +2,15 @@ puts 'cleaning database'
 Babysitter.destroy_all
 User.destroy_all
 
+cities = ["Arendal", "Bergen", "Bodø", "Drammen", "Egersund", "Farsund", "Flekkefjord", "Florø", "Fredrikstad", "Gjøvik", "Grimstad", "Halden", "Hamar", "Hammerfest", "Harstad", "Haugesund", "Holmestrand", "Horten", "Hønefoss", "Kongsberg"]
+
 puts 'creating users'
 
-20.times do
+cities.each do |city|
   User.create!({
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address: Faker::Address.full_address,
+    address: "#{city}",
     email: Faker::Internet.email,
     password: Faker::Internet.password
   })
@@ -30,3 +32,5 @@ end
 puts "created #{Babysitter.count} babysitters"
 
 puts "Finished!"
+
+

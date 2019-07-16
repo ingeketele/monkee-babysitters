@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="babysitter-profile col-6">
+    <div class="babysitter-profile col-md-8 col-lg-6">
 
       <div class="card-top">
 
@@ -8,8 +8,8 @@
           <img class="avatar-xtra-large" src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="">
           <h1><%= "#{@babysitter.user.first_name} #{@babysitter.user.last_name}" %></h1>
           <div class="basic-info">
-            <p>Rating: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></p>
-            <p>NOK <%= @babysitter.price_per_hour %>/h</p>
+            <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></p>
+            <p>NOK <%= @babysitter.price_per_hour %>/hour</p>
           </div>
         </div>
 
@@ -35,7 +35,11 @@
           </div>
 
           <div class="location">
-            <p>Address: <%= @babysitter.user.address %></p>
+            <% if current_user.address %>
+              <p><i class="fas fa-map-marker-alt"></i> <%= current_user.distance_from(@babysitter.user.address).to_i %> km</p>
+            <% else %>
+              <p><i class="fas fa-map-marker-alt"></i> <%= @babysitter.user.address %></p>
+            <% end %>
           </div>
         </div>
 
