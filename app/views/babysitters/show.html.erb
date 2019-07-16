@@ -1,2 +1,49 @@
-<h1>Babysitters#show</h1>
-<p>Find me in app/views/babysitters/show.html.erb</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="babysitter-profile col-md-8 col-lg-6">
+
+      <div class="card-top">
+
+        <div class="profile-header">
+          <img class="avatar-xtra-large" src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="">
+          <h1><%= "#{@babysitter.user.first_name} #{@babysitter.user.last_name}" %></h1>
+          <div class="basic-info">
+            <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></p>
+            <p>NOK <%= @babysitter.price_per_hour %>/hour</p>
+          </div>
+        </div>
+
+        <div class="profile-nav">
+          <div class="nav-menu active">
+            <a href="#">BIO</a>
+          </div>
+          <div class="nav-menu">
+            <a href="#">BOOK</a>
+          </div>
+          <div class="nav-menu">
+            <a href="#">REVIEWS</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-content">
+        <p><%= @babysitter.biography %></p>
+
+        <div class="details">
+          <div class="age">
+            <p>Age: <%= @babysitter.age %></p>
+          </div>
+
+          <div class="location">
+            <% if current_user.address %>
+              <p><i class="fas fa-map-marker-alt"></i> <%= current_user.distance_from(@babysitter.user.address).to_i %> km</p>
+            <% else %>
+              <p><i class="fas fa-map-marker-alt"></i> <%= @babysitter.user.address %></p>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
