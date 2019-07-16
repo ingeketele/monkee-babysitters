@@ -1,2 +1,13 @@
-<h1>Babysitters#show</h1>
-<p>Find me in app/views/babysitters/show.html.erb</p>
+<h1><%= "#{@babysitter.user.first_name} #{@babysitter.user.last_name}" %></h1>
+
+<img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/ssaunier" alt="">
+<p>Rating: <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></p>
+
+<p>Biography: <%= @babysitter.biography %></p>
+<p>Price per hour: NOK <%= @babysitter.price_per_hour %></p>
+
+<p>Age: <%= @babysitter.age %></p>
+<p>Address: <%= @babysitter.user.address %></p>
+
+<a href="#">Read reviews</a>
+<a href="#">Book</a>
