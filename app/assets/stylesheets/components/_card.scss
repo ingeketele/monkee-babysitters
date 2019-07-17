@@ -29,8 +29,12 @@
 }
 
 .avatar-text-center {
+  background-color: $monkee-green;
   text-align: center;
   border-bottom: 1px solid #F0F0F0;
+  .avatar-large {
+    border: 1px solid white;
+  }
 }
 
 
