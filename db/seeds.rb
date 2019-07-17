@@ -2,7 +2,7 @@ puts 'cleaning database'
 Babysitter.destroy_all
 User.destroy_all
 
-cities = ["Arendal", "Bergen", "Bodø", "Drammen", "Egersund", "Farsund", "Flekkefjord", "Florø", "Fredrikstad", "Gjøvik", "Grimstad", "Halden", "Hamar", "Hammerfest", "Harstad", "Haugesund", "Holmestrand", "Horten", "Hønefoss", "Kongsberg"]
+cities = ["Arendal", "Bergen", "Stavanger", "Drammen", "Egersund", "Farsund", "Flekkefjord", "Florø", "Fredrikstad", "Gjøvik", "Grimstad", "Halden", "Hamar", "Hammerfest", "Oslo", "Haugesund", "Holmestrand", "Horten", "Hønefoss", "Kongsberg"]
 
 puts 'creating users'
 
