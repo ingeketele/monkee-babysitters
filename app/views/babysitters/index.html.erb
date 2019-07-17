@@ -1,62 +1,41 @@
-  <div class="inner-container">
-      <div class="btn-group mb-2">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">Sort by price</button>
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-          <button class="dropdown-item" type="button">Lowest first</button>
-          <button class="dropdown-item" type="button">Highest first </button>
-          <button class="dropdown-item" type="button">Doesn't matter</button>
-        </div>
-      </div>
-
-      <div class="btn-group mb-2">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">Sort by place</button>
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-          <button class="dropdown-item" type="button">Closest first</button>
-          <button class="dropdown-item" type="button">Furthest first </button>
-          <button class="dropdown-item" type="button">Doesn't matter</button>
-        </div>
-      </div>
-
-      <div class="btn-group mb-2">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">Sort by rating</button>
-        <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg-left">
-          <button class="dropdown-item" type="button">Highest first</button>
-          <button class="dropdown-item" type="button">Lowest first </button>
-          <button class="dropdown-item" type="button">Doesn't matter</button>
-        </div>
-      </div>
-
-
-    <div class="row justify-content-center">
-      <% @babysitters.each do |babysitter| %>
-      <div class="card-deck col-sm-12 col-lg-6 col-xl-3">
-
-        <div class="card">
-          <div class="avatar-text-center">
-            <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
-          </div>
-
-          <div class="card-body">
-            <h5 class="card-title"><%= babysitter.user.first_name %>, 24</h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= babysitter.user.address %></h6>
-            <p class="card-text"><%= babysitter.biography %></p>
-          </div>
-
-          <div class="card-footer">
-            <div class="price">
-              <p class="text-muted"><%= "NOK #{babysitter.price_per_hour}/hr" %></p>
-            </div>
-
-            <div class="ratings">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
+<div class="row ml-4">
+  <div class="simple_form mt-3">
+    <%= simple_form_for :sort, method: :get do |f| %>
+      <%= f.input :price_per_hour, collection: %w[Lowest Highest All], label: false, input_html: { onchange: "this.form.submit()"} %>
+    <% end %>
   </div>
+
+<div class="row justify-content-center">
+  <% @babysitters.each do |babysitter| %>
+  <div class="card-deck col-sm-12 col-lg-6 col-xl-3">
+    <%= link_to babysitter_path(babysitter) do %>
+    <div class="card">
+      <div class="avatar-text-center">
+        <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title"><%= babysitter.user.first_name %>, 24</h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= babysitter.user.address %></h6>
+        <p class="card-text"><%= babysitter.biography %></p>
+      </div>
+
+      <div class="card-footer">
+        <div class="price">
+          <p class="text-muted"><%= "NOK #{babysitter.price_per_hour}/hr" %></p>
+        </div>
+
+        <div class="ratings">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+
