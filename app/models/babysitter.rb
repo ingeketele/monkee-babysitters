@@ -30,7 +30,7 @@ class Babysitter < ApplicationRecord
     ratings = []
     bookings = Booking.where(babysitter_id: id)
     bookings.each do |booking|
-      ratings << Review.find(booking.id).rating if Review.exists?(booking_id: booking.id)
+      ratings << Review.find_by(booking_id: booking.id).rating if Review.exists?(booking_id: booking.id)
     end
     ratings.sum / ratings.count
   end
