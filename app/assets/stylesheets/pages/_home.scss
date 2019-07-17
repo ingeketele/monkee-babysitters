@@ -1,1 +1,12 @@
 // Specific CSS for your home-page
+
+.main-container {
+  display: flex;
+}
+
+.inner-container {
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin: 16px;
+  margin-top: 8px;
+}
