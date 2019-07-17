@@ -1,0 +1,40 @@
+<div class="container">
+  <br>
+  <div id="profile">
+    <div class="row">
+      <div class="col-sm-2" style="min-width: 130px;">
+        <div id="profile-img">
+          <%= image_tag 'avatar', class: "dashboard-avatar", id: "profile-image"%>
+        </div>
+      </div>
+      <div class="col-sm-4" style="min-width: 280px;">
+        <div id="user-table">
+          <table>
+            <h3>User information</h3>
+            <tr>
+              <td class="first_column">First name: </td>
+              <td class="second_column"><%= @user.first_name %></td>
+            </tr>
+            <tr>
+              <td class="first_column">Last name: </td>
+              <td class="second_column"><%= @user.last_name %></td>
+            </tr>
+            <tr>
+              <td class="first_column">E-mail: </td>
+              <td class="second_column"><%= @user.email %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div id="biography">
+          <h3>Biography</h3>
+          <p>"Lorem ipsum dolor sit amet, quot postea euismod nec ut, graece urbanitas eos te. Ex quas praesent ius. Ut sit dolores luptatum elaboraret, oratio patrioque pri ea. At diceret deseruisse assueverit has, ne dico copiosae nec. Decore legimus ex vel, pri ne sint quodsi nostrud, persius nonumes cu pro."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -7,6 +7,13 @@
   border-radius: 50%;
   margin: 16px;
 }
+
+.avatar-xtra-large {
+  width: 150px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: white 1px solid;
+}
 .avatar-bordered {
   width: 40px;
   border-radius: 50%;
@@ -19,3 +26,4 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: white 1px solid;
 }
+
