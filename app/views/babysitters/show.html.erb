@@ -8,7 +8,7 @@
           <img class="avatar-xtra-large" src="<%= @babysitter.user.avatar %>" alt="">
           <h1><%= "#{@babysitter.user.first_name} #{@babysitter.user.last_name}" %></h1>
           <div class="basic-info">
-            <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></p>
+            <p><%= @babysitter.stars %></p>
             <p>NOK <%= @babysitter.price_per_hour %>/hour</p>
           </div>
         </div>
@@ -39,7 +39,7 @@
 
           <div class="location">
             <% if current_user.address %>
-              <p><i class="fas fa-map-marker-alt"></i> <%= current_user.distance_from(@babysitter.user.address).to_i %> km</p>
+              <p><i class="fas fa-map-marker-alt"></i> <%= current_user.distance_from(@babysitter.user.address)&.to_i %> km</p>
             <% else %>
               <p><i class="fas fa-map-marker-alt"></i> <%= @babysitter.user.address %></p>
             <% end %>
