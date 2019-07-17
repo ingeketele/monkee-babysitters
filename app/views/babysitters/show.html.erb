@@ -39,7 +39,7 @@
 
           <div class="location">
             <% if current_user.address %>
-              <p><i class="fas fa-map-marker-alt"></i> <%= current_user.distance_from(@babysitter.user.address)&.to_i %> km</p>
+              <p><i class="fas fa-map-marker-alt"></i><%= current_user.distance_from(@babysitter.user.address).round %> km</p>
             <% else %>
               <p><i class="fas fa-map-marker-alt"></i> <%= @babysitter.user.address %></p>
             <% end %>

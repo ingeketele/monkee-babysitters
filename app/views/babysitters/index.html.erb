@@ -12,13 +12,13 @@
       <div class="card">
 
         <div class="avatar-text-center">
-          <img class="avatar-large" alt="avatar-large" src="<%= babysitter.user.avatar %>" />
+          <img class="avatar-xtra-large" alt="avatar-large" src="<%= babysitter.user.avatar %>" />
         </div>
 
         <div class="card-body">
           <h5 class="card-title"><%= babysitter.user.first_name %>, 24</h5>
           <h6 class="card-subtitle mb-2 text-muted"><%= babysitter.user.address %></h6>
-          <p class="card-text"><%= babysitter.biography %></p>
+          <p class="card-text"><%= babysitter.biography.truncate(50) %></p>
         </div>
 
         <div class="card-footer">

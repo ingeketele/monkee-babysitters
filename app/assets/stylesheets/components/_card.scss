@@ -1,5 +1,9 @@
 .card-deck {
-  margin-bottom: 16px
+  margin-bottom: 16px;
+  a {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 .card-footer {
@@ -14,8 +18,11 @@
   justify-content: space-between;
 }
 
-.card-footer p {
-  margin: 0;
+.card-footer {
+  background-color: rgba(3, 102, 107, 0.3);
+  p {
+    margin: 0;
+  }
 }
 
 .price p {
@@ -23,7 +30,7 @@
 }
 
 .ratings {
-  color: #FFB300;
+  color: white;
   display: flex;
   justify-content: center;
 }
@@ -31,6 +38,10 @@
 .avatar-text-center {
   text-align: center;
   border-bottom: 1px solid #F0F0F0;
+  background-color: $monkee-green;
+  .avatar-xtra-large {
+    margin: 8px;
+  }
 }
 
 
