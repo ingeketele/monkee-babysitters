@@ -18,7 +18,7 @@
           </div>
 
           <div class="card-body">
-            <h5 class="card-title"><%= babysitter.user.first_name %>, babysitter.age</h5>
+            <h5 class="card-title"><%= babysitter.user.first_name %>, <%= babysitter.age %></h5>
             <h6 class="card-subtitle mb-2 text-muted"><%= babysitter.user.address %></h6>
             <p class="card-text"><%= babysitter.biography.truncate(40) %></p>
           </div>
