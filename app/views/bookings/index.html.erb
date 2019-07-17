@@ -37,7 +37,7 @@
           <% confirmed_bookings = [] %>
           <% denied_bookings = [] %>
 
-          <% if booking.status == "pending" %>
+          <% if booking.status == "pending" && booking.babysitter_id == @babysitter.id %>
             <% pending_bookings << booking %>
             <p>You have <%= pluralize(pending_bookings.count, 'booking') %> pending with <%= @babysitter.user.first_name %> for</p>
             <ul>
@@ -45,7 +45,7 @@
                 <li>from <%= p_booking.start_time %> until <%= p_booking.start_time + p_booking.duration_per_hour.hours %></li>
               <% end %>
             </ul>
-          <% elsif booking.status == "confirmed" %>
+          <% elsif booking.status == "confirmed" && booking.babysitter_id == @babysitter.id %>
             <% confirmed_bookings << booking %>
             <p>You have <%= pluralize(pending_bookings.count, 'booking') %> confirmed with <%= @babysitter.user.first_name %></p>
           <% end %>
