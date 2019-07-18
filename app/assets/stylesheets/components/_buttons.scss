@@ -4,4 +4,8 @@
   color: white;
   text-transform: uppercase;
   text-align: center;
+  &:hover {
+    color: white;
+    text-decoration: underline;
+  }
 }

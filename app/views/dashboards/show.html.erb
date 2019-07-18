@@ -1,40 +1,106 @@
-<div class="container">
-  <br>
-  <div id="profile">
-    <div class="row">
-      <div class="col-sm-2" style="min-width: 130px;">
-        <div id="profile-img">
-          <%= image_tag 'avatar', class: "dashboard-avatar", id: "profile-image"%>
-        </div>
+<div class="card-top">
+
+  <div class="profile-header">
+      <%= image_tag @user.avatar || "avatar-default.png", class: "avatar-xtra-large" %>
+    <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+  </div>
+  <div class="container">
+    <div class="profile-nav">
+      <% if @params.nil? || @params == "ALL" %>
+        <div class="nav-menu active">
+      <% else %>
+        <div class="nav-menu">
+      <% end %>
+        <%= simple_form_for :booking_status, method: :get, url: dashboard_path do |f| %>
+          <%= f.button :submit, "ALL", class: "link" %>
+        <% end %>
       </div>
-      <div class="col-sm-4" style="min-width: 280px;">
-        <div id="user-table">
-          <table>
-            <h3>User information</h3>
-            <tr>
-              <td class="first_column">First name: </td>
-              <td class="second_column"><%= @user.first_name %></td>
-            </tr>
-            <tr>
-              <td class="first_column">Last name: </td>
-              <td class="second_column"><%= @user.last_name %></td>
-            </tr>
-            <tr>
-              <td class="first_column">E-mail: </td>
-              <td class="second_column"><%= @user.email %></td>
-            </tr>
-          </table>
-        </div>
+      <% if @params == "PENDING" %>
+        <div class="nav-menu active">
+      <% else %>
+        <div class="nav-menu">
+      <% end %>
+        <%= simple_form_for :booking_status, method: :get, url: dashboard_path do |f| %>
+          <%= f.button :submit, "PENDING", class: "link" %>
+        <% end %>
       </div>
-      <div class="col-sm-6">
-        <div id="biography">
-          <h3>Biography</h3>
-          <p>"Lorem ipsum dolor sit amet, quot postea euismod nec ut, graece urbanitas eos te. Ex quas praesent ius. Ut sit dolores luptatum elaboraret, oratio patrioque pri ea. At diceret deseruisse assueverit has, ne dico copiosae nec. Decore legimus ex vel, pri ne sint quodsi nostrud, persius nonumes cu pro."</p>
-        </div>
+      <% if @params == "CONFIRMED" %>
+        <div class="nav-menu active">
+      <% else %>
+        <div class="nav-menu">
+      <% end %>
+        <%= simple_form_for :booking_status, method: :get, url: dashboard_path do |f| %>
+          <%= f.button :submit, "CONFIRMED", class: "link" %>
+        <% end %>
+      </div>
+      <% if @params == "COMPLETED" %>
+        <div class="nav-menu active">
+      <% else %>
+        <div class="nav-menu">
+      <% end %>
+        <%= simple_form_for :booking_status, method: :get, url: dashboard_path do |f| %>
+          <%= f.button :submit, "COMPLETED", class: "link" %>
+        <% end %>
+      </div>
+      <% if @params == "REVIEWS" %>
+        <div class="nav-menu active">
+      <% else %>
+        <div class="nav-menu">
+      <% end %>
+        <%= simple_form_for :show_reviews, method: :get, url: dashboard_path do |f| %>
+          <%= f.button :submit, "REVIEWS", class: "link" %>
+        <% end %>
       </div>
     </div>
   </div>
 </div>
 
+<% if @params == "REVIEWS" %>
+  <% @bookings.each do |booking| %>
+    <% booking.reviews.each do |review| %>
+    <div class="container">
+      <div class="card-product">
+        <%= image_tag booking.babysitter.user.avatar || "avatar-default.png" %>
+        <div class="card-product-infos">
+          <div class="text">
+            <div class="bs-info">
+              <p>Review for:</p>
+              <h2> <%= booking.babysitter.user.first_name %> <%= booking.babysitter.user.last_name %></h2>
+               <p><%= review.comment %></p>
+               <p class="ratings"><%= review.stars %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<% else %>
+
+<div class="container">
+  <% @bookings.each do |booking| %>
+  <div class="card-product">
+    <%= image_tag booking.babysitter.user.avatar || "avatar-default.png" %>
+    <div class="card-product-infos">
+      <div class="text">
+        <div class="bs-info">
+          <h2><%= booking.babysitter.user.first_name %> <%= booking.babysitter.user.last_name %></h2>
+          <p>Status: <%= booking.status %></p>
+        </div>
+        <div class="date-info">
+          <p>Date: <%= booking.start_time.strftime("%d-%m-%y") %></p>
+          <p>From <%= booking.start_time.strftime("%H:%M") %> until <%= booking.end_time.strftime("%H:%M") %></p>
+        </div>
+      </div>
+
+      <% if @params == "COMPLETED" %>
+      <%= link_to "Write a review", new_booking_review_path(booking), class: 'submit-button' %>
+      <% end %>
+    </div>
+  </div>
 
 
+  <% end %>
+</div>
+<% end %>

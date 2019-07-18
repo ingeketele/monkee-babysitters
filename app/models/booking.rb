@@ -5,4 +5,7 @@ class Booking < ApplicationRecord
 
   validates :start_time, :duration_per_hour, presence: true
 
+  def end_time
+    start_time + duration_per_hour.hours
+  end
 end
