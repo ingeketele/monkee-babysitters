@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resource :dashboard, only: [:show]
   resources :babysitters, only: [:index, :show] do
     resources :bookings, only: [:index, :new, :create, :show]
+    resources :reviews, only: [:index]
   end
 
   resources :bookings, only: [] do
