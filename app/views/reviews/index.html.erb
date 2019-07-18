@@ -13,13 +13,13 @@
   <div class="container">
 
     <div class="profile-nav">
-      <div class="nav-menu active">
+      <div class="nav-menu">
         <%= link_to "ABOUT", babysitter_path(@babysitter) %>
       </div>
       <div class="nav-menu">
         <%= link_to "BOOK", new_babysitter_booking_path(@babysitter) %>
       </div>
-      <div class="nav-menu">
+      <div class="nav-menu active">
         <%= link_to "REVIEWS", babysitter_reviews_path(@babysitter) %>
       </div>
       <div class="nav-menu">
@@ -30,11 +30,23 @@
 </div>
 
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="babysitter-profile col-12">
-      <div class="card-content">
-        <p><%= @babysitter.biography %></p>
+  <% @bookings.each do |booking| %>
+  <% booking.reviews.each do |review| %>
+    <div class="container">
+      <div class="card-product">
+        <%= image_tag review.booking.user.avatar || "avatar-default.png" %>
+        <div class="card-product-infos">
+          <div class="text">
+            <div class="bs-info">
+              <p>Review from:</p>
+              <h2> <%= review.booking.user.first_name %> <%= review.booking.user.last_name %></h2>
+               <p><%= review.comment %></p>
+               <p class="ratings"><%= review.stars %></p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
+  <% end %>
 </div>

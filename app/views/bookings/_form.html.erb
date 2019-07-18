@@ -1,7 +1,7 @@
 <%= simple_form_for [@babysitter, @booking] do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :babysitter_id, value: @babysitter.id %>
-  <%= f.input :start_time, as: :datetime %>
+  <%= f.input :start_time, input_html: { class: "daterange" } %>
   <%= f.input :duration_per_hour, label: "For how many hours will you need #{@babysitter.user.first_name}?" %>
   <%= f.hidden_field :price_per_hour, value: @babysitter.price_per_hour %>
   <%= f.hidden_field :status, value: "pending" %>

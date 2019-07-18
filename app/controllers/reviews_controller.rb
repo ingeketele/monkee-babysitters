@@ -1,6 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :set_booking, only: [:new, :create]
 
+  def index
+    @babysitter = Babysitter.find(params[:babysitter_id])
+    @bookings = Booking.where(babysitter_id: @babysitter.id)
+  end
+
   def new
     @review = Review.new
   end

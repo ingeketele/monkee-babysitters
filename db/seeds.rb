@@ -24,7 +24,7 @@ users = User.all
 users.each do |user|
   Babysitter.create!({
     user_id: user.id,
-    biography: Faker::Lorem.sentence(8),
+    biography: Faker::Lorem.paragraph,
     birthdate: Faker::Date.birthday(16, 65),
     price_per_hour: (100..500).to_a.sample
   })
