@@ -4,6 +4,20 @@
       <%= f.input :price_per_hour, prompt: 'Sort by price', collection: %w[Lowest Highest All], label: false, input_html: { onchange: "this.form.submit()"} %>
     <% end %>
   </div>
+  <div class="simple_form_filter mt-3">
+    <%= simple_form_for :sort, method: :get do |f| %>
+      <%= f.input :distance_radius, prompt: 'Sort by distance', collection: ['5 km', '10 km', '50 km'], label: false, input_html: { onchange: "this.form.submit()"} %>
+    <% end %>
+  </div>
+  <div class="searchbar mt-3">
+    <%= form_tag babysitters_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a babysitter"
+      %>
+    <% end %>
+  </div>
 </div>
 
 <div class="main-container">
