@@ -200,6 +200,20 @@ end
 
 puts "created #{Babysitter.count} babysitters"
 
+puts "creating bookings"
+
+user = User.first
+babysitter = Babysitter.last
+
+Booking.create!({
+  user_id: user.id,
+  babysitter_id: babysitter.id,
+  start_time: "18.07.2019".to_date,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
 puts "Finished!"
 
 
