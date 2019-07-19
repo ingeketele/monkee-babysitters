@@ -1,33 +1,38 @@
+<div class="card-top">
+
+  <div class="profile-header">
+    <img class="avatar-xtra-large" src="<%= @babysitter.user.avatar %>" alt="">
+    <h1><%= "#{@babysitter.user.first_name} #{@babysitter.user.last_name}, #{@babysitter.age}" %></h1>
+    <h4><%= @babysitter.stars %></h4>
+    <% if current_user.address %>
+      <p><i class="fas fa-map-marker-alt"></i><%= current_user.distance_from(@babysitter.user.address)&.round %> km | NOK <%= @babysitter.price_per_hour %>/hr</p>
+    <% else %>
+      <p><i class="fas fa-map-marker-alt"></i>  <%= @babysitter.user.address %> | NOK <%= @babysitter.price_per_hour %>/hr</p>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <div class="profile-nav">
+      <div class="nav-menu">
+        <%= link_to "BIO", babysitter_path(@babysitter) %>
+      </div>
+      <div class="nav-menu">
+        <%= link_to "BOOK", new_babysitter_booking_path(@babysitter) %>
+      </div>
+      <div class="nav-menu">
+        <%= link_to "REVIEWS", babysitter_reviews_path(@babysitter) %>
+      </div>
+      <div class="nav-menu active">
+        <%= link_to "BOOKINGS", babysitter_bookings_path(@babysitter) %>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="row justify-content-center">
-    <div class="babysitter-profile col-md-8 col-lg-6">
+    <div class="babysitter-profile col-12">
 
-      <div class="card-top">
-
-        <div class="profile-header">
-          <img class="avatar-xtra-large" src="<%= @babysitter.user.avatar %>" alt="">
-          <h1><%= "#{@babysitter.user.first_name} #{@babysitter.user.last_name}" %></h1>
-          <div class="basic-info">
-            <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></p>
-            <p>NOK <%= @babysitter.price_per_hour %>/hour</p>
-          </div>
-        </div>
-
-        <div class="profile-nav">
-          <div class="nav-menu">
-            <%= link_to "BIO", babysitter_path(@babysitter) %>
-          </div>
-          <div class="nav-menu">
-            <%= link_to "BOOK", new_babysitter_booking_path(@babysitter) %>
-          </div>
-          <div class="nav-menu">
-            <a href="#">REVIEWS</a>
-          </div>
-          <div class="nav-menu active">
-            <%= link_to "BOOKINGS", babysitter_bookings_path(@babysitter) %>
-          </div>
-        </div>
-      </div>
 
       <div class="card-content">
 
@@ -35,22 +40,39 @@
 
           <% pending_bookings = [] %>
           <% confirmed_bookings = [] %>
-          <% denied_bookings = [] %>
+          <% completed_bookings = [] %>
 
           <% if booking.status == "pending" && booking.babysitter_id == @babysitter.id %>
             <% pending_bookings << booking %>
             <p>You have <%= pluralize(pending_bookings.count, 'booking') %> pending with <%= @babysitter.user.first_name %> for</p>
             <ul>
               <% pending_bookings.each do |p_booking| %>
-                <li>from <%= p_booking.start_time %> until <%= p_booking.start_time + p_booking.duration_per_hour.hours %></li>
+                <li><%= p_booking.start_time.strftime("%d %B %Y") %> from <%= p_booking.start_time.strftime("%H:%M") %> until <%= (p_booking.start_time + p_booking.duration_per_hour.hours).strftime("%H:%M") %></li>
               <% end %>
             </ul>
           <% elsif booking.status == "confirmed" && booking.babysitter_id == @babysitter.id %>
             <% confirmed_bookings << booking %>
-            <p>You have <%= pluralize(pending_bookings.count, 'booking') %> confirmed with <%= @babysitter.user.first_name %></p>
+            <p>You have <%= pluralize(confirmed_bookings.count, 'booking') %> pending with <%= @babysitter.user.first_name %> for</p>
+            <ul>
+              <% confirmed_bookings.each do |c_booking| %>
+                <li><%= c_booking.start_time.strftime("%d %B %Y") %> from <%= c_booking.start_time.strftime("%H:%M") %> until <%= (c_booking.start_time + p_booking.duration_per_hour.hours).strftime("%H:%M") %></li>
+              <% end %>
+            </ul>
+          <% elsif booking.status == "completed" && booking.babysitter_id == @babysitter.id %>
+            <% completed_bookings << booking %>
+            <p>You have <%= pluralize(completed_bookings.count, 'booking') %> pending with <%= @babysitter.user.first_name %> for</p>
+            <ul>
+              <% completed_bookings.each do |c_booking| %>
+                <li><%= c_booking.start_time.strftime("%d %B %Y") %> from <%= c_booking.start_time.strftime("%H:%M") %> until <%= (c_booking.start_time + p_booking.duration_per_hour.hours).strftime("%H:%M") %></li>
+              <% end %>
+            </ul>
+          <% elsif booking.nil? %>
+            <p>You have no with <%= @babysitter.user.first_name %></p>
           <% end %>
 
         <% end %>
+
+        <%= link_to "All bookings", dashboard_path, class: 'submit-button px-2' %>
 
       </div>
     </div>

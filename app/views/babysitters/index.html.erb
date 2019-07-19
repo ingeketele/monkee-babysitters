@@ -1,7 +1,7 @@
 <div class="row ml-5">
   <div class="simple_form_filter mt-3">
     <%= simple_form_for :sort, method: :get do |f| %>
-      <%= f.input :price_per_hour, prompt: 'Sort by price', collection: %w[Lowest Highest All], label: false, input_html: { onchange: "this.form.submit()"} %>
+      <%= f.input :price_per_hour, prompt: "Sort by price", collection: %w[Lowest Highest All], label: false, input_html: { onchange: "this.form.submit()"} %>
     <% end %>
   </div>
   <div class="simple_form_filter mt-3">
@@ -31,7 +31,7 @@
         <%= link_to babysitter_path(babysitter) do %>
         <div class="card">
           <div class="avatar-text-center">
-            <img class="avatar-xtra-large" alt="avatar-large" src="<%= babysitter.user.avatar %>" />
+            <%= image_tag babysitter.user.avatar.url, class: "avatar-xtra-large" %>
           </div>
 
           <div class="card-body">
@@ -46,7 +46,7 @@
             </div>
 
             <div class="ratings">
-              <%= babysitter.stars %>
+              <%= babysitter.stars || "no ratings yet" %>
             </div>
           </div>
         </div>
