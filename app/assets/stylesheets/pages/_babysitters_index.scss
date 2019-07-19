@@ -4,7 +4,7 @@
 // }
 
 body {
-  background: url(custom_bg.jpg) no-repeat center center fixed;
+  background: asset-url("custom_bg.jpg") no-repeat center center fixed;
   background-size: cover;
 }
 
