@@ -17,6 +17,16 @@
   }
 }
 
+.user-name {
+  a {
+    color: white;
+    font-size: 12px;
+  }
+  h1 {
+    margin-bottom: 0;
+  }
+}
+
 .basic-info {
   display: flex;
   justify-content: space-around;

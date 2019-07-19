@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Create review</h2>
+  <h2>Write a review for <%= "#{@booking.babysitter.user.first_name} #{@booking.babysitter.user.last_name}" %></h2>
   <%= render 'form' %>
 </div>
 
