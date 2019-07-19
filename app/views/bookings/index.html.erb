@@ -65,9 +65,6 @@
                 <li><%= c_booking.start_time.strftime("%d %B %Y") %> from <%= c_booking.start_time.strftime("%H:%M") %> until <%= (c_booking.start_time + c_booking.duration_per_hour.hours).strftime("%H:%M") %></li>
               <% end %>
             </ul>
-          <% elsif booking.babysitter_id != @babysitter.id %>
-             <p>You have no bookings with <%= "#{@babysitter.user.first_name} #{@babysitter.user.last_name}" %></p>
-          <% end %>
 
         <% end %>
 
