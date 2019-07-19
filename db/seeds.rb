@@ -6,15 +6,26 @@ cities = ["Oslo", "Ski", "Lillestrøm", "Drammen", "Sandvika", "Nittedal", "Moss
 
 puts 'creating users'
 
+User.create!(first_name: "BoB", last_name: "Bobson", address: "Mandalls gate 10, 0190 Oslo", email: "bob@bobmail.com", password: "123456")
+
 cities.each do |city|
-  User.create!({
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    address: "#{city}",
-    email: Faker::Internet.email,
-    password: Faker::Internet.password,
-    avatar: 'https://source.unsplash.com/360x360/?face'
-  })
+  rand(5..10).times do
+    lat, lng = Geocoder::Calculations.random_point_near("#{city}, Norway", 30, units: :km)
+
+    user = User.new({
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      address: "#{city}",
+      email: Faker::Internet.email,
+      password: Faker::Internet.password,
+      avatar: 'https://source.unsplash.com/360x360/?face'
+    })
+    user.is_seeding = true
+    user.latitude = lat if lat
+    user.longitude = lng if lng
+    user.save!
+  end
+
 end
 
 puts "created #{User.count} users"

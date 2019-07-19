@@ -49,7 +49,8 @@ class BabysittersController < ApplicationController
     @markers = @babysitters.map do |babysitter|
       {
         lat: babysitter.user.latitude,
-        lng: babysitter.user.longitude
+        lng: babysitter.user.longitude,
+        infoWindow: render_to_string(partial: "infowindow", locals: { babysitter: babysitter })
       }
     end
   end
