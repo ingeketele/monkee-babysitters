@@ -6,6 +6,7 @@
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  padding-right: 3rem;
 }
 
 .navbar-lewagon .navbar-brand img {
@@ -17,4 +18,5 @@
   color: $monkee-green;
   font-size: 35px;
   padding: 0;
+  padding-left: 3rem;
 }

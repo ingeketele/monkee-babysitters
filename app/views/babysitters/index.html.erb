@@ -4,11 +4,28 @@
       <%= f.input :price_per_hour, prompt: "Sort by price", collection: %w[Lowest Highest All], label: false, input_html: { onchange: "this.form.submit()"} %>
     <% end %>
   </div>
+  <div class="simple_form_filter mt-3">
+    <%= simple_form_for :sort, method: :get do |f| %>
+      <%= f.input :distance_radius, prompt: 'Sort by distance', collection: ['5 km', '10 km', '50 km'], label: false, input_html: { onchange: "this.form.submit()"} %>
+    <% end %>
+  </div>
+  <div class="searchbar mt-3">
+    <%= form_tag babysitters_path, method: :get do %>
+      <div class="input-group">
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: 'Find a Babysitter', size: 50 %>
+        <%= submit_tag "Search", class: "btn btn-primary", :name => nil %>
+      </div>
+    <% end %>
+  </div>
+
+
+
 </div>
 
 <div class="main-container">
+
   <div id="cards">
-    <div class="row ml-3">
+    <div class="row">
       <% @babysitters.each do |babysitter| %>
       <div class="card-deck col-sm-12 col-lg-6 col-xl-4">
         <%= link_to babysitter_path(babysitter) do %>
@@ -40,8 +57,6 @@
   </div>
   <div
     id="map"
-    style="width: 100%;
-    height: 600px;"
     data-markers="<%= @markers.to_json %>"
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>

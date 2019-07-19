@@ -1,10 +1,22 @@
 class Babysitter < ApplicationRecord
+  include Geocoder
+
   belongs_to :user
   has_many :bookings, dependent: :destroy
 
   validates :biography, :birthdate, :price_per_hour, presence: true
 
-  scope :geocoded, -> { joins(:user).where.not(users: { latitude: nil, longitude: nil }) }
+  # scope :geocoded, -> { joins(:user).where.not(users: { latitude: nil, longitude: nil }) }
+
+  after_validation :set_coordinates, on: :create
+
+  delegate :address, to: :user
+
+  geocoded_by :address
+
+  def self.find_by_name(query)
+    joins(:user).where("users.first_name ILIKE :query OR users.last_name ILIKE :query", query: "#{query}%")
+  end
 
   def age
     (Time.zone.today - birthdate).to_i / 365
@@ -37,5 +49,12 @@ class Babysitter < ApplicationRecord
     else
       ratings.sum / ratings.count
     end
+  end
+
+  private
+
+  def set_coordinates
+    self.latitude = user.latitude
+    self.longitude = user.longitude
   end
 end
