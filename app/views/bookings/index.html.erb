@@ -65,6 +65,7 @@
                 <li><%= c_booking.start_time.strftime("%d %B %Y") %> from <%= c_booking.start_time.strftime("%H:%M") %> until <%= (c_booking.start_time + c_booking.duration_per_hour.hours).strftime("%H:%M") %></li>
               <% end %>
             </ul>
+          <% end %>
 
         <% end %>
 
