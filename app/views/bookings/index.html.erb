@@ -3,7 +3,7 @@
   <div class="profile-header">
     <img class="avatar-xtra-large" src="<%= @babysitter.user.avatar %>" alt="">
     <h1><%= "#{@babysitter.user.first_name} #{@babysitter.user.last_name}, #{@babysitter.age}" %></h1>
-    <h4><%= @babysitter.stars %></h4>
+    <h6><%= @babysitter.stars %></h6>
     <% if current_user.address %>
       <p><i class="fas fa-map-marker-alt"></i><%= current_user.distance_from(@babysitter.user.address)&.round %> km | NOK <%= @babysitter.price_per_hour %>/hr</p>
     <% else %>
@@ -33,7 +33,6 @@
   <div class="row justify-content-center">
     <div class="babysitter-profile col-12">
 
-
       <div class="card-content">
 
         <% @bookings.each do |booking| %>
@@ -52,7 +51,7 @@
             </ul>
           <% elsif booking.status == "confirmed" && booking.babysitter_id == @babysitter.id %>
             <% confirmed_bookings << booking %>
-            <p>You have <%= pluralize(confirmed_bookings.count, 'booking') %> pending with <%= @babysitter.user.first_name %> for</p>
+            <p>You have <%= pluralize(confirmed_bookings.count, 'booking') %> confirmed with <%= @babysitter.user.first_name %> for</p>
             <ul>
               <% confirmed_bookings.each do |c_booking| %>
                 <li><%= c_booking.start_time.strftime("%d %B %Y") %> from <%= c_booking.start_time.strftime("%H:%M") %> until <%= (c_booking.start_time + c_booking.duration_per_hour.hours).strftime("%H:%M") %></li>
@@ -60,19 +59,19 @@
             </ul>
           <% elsif booking.status == "completed" && booking.babysitter_id == @babysitter.id %>
             <% completed_bookings << booking %>
-            <p>You have <%= pluralize(completed_bookings.count, 'booking') %> pending with <%= @babysitter.user.first_name %> for</p>
+            <p>You have <%= pluralize(completed_bookings.count, 'booking') %> completed with <%= @babysitter.user.first_name %> for</p>
             <ul>
               <% completed_bookings.each do |c_booking| %>
                 <li><%= c_booking.start_time.strftime("%d %B %Y") %> from <%= c_booking.start_time.strftime("%H:%M") %> until <%= (c_booking.start_time + c_booking.duration_per_hour.hours).strftime("%H:%M") %></li>
               <% end %>
             </ul>
-          <% elsif booking.nil? %>
-            <p>You have no with <%= @babysitter.user.first_name %></p>
+          <% elsif booking.babysitter_id != @babysitter.id %>
+             <p>You have no bookings with <%= "#{@babysitter.user.first_name} #{@babysitter.user.last_name}" %></p>
           <% end %>
 
         <% end %>
 
-        <%= link_to "All bookings", dashboard_path, class: 'submit-button px-2' %>
+        <%= link_to "Check all your bookings", dashboard_path, class: 'submit-button px-2' %>
 
       </div>
     </div>

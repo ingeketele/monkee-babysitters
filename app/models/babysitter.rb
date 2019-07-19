@@ -23,6 +23,7 @@ class Babysitter < ApplicationRecord
   end
 
   def stars
+
     if average_rating == 0
       '<i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'.html_safe
     elsif average_rating == 1
@@ -35,6 +36,8 @@ class Babysitter < ApplicationRecord
       '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'.html_safe
     elsif average_rating == 5
       '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>'.html_safe
+    else average_rating = "no ratings yet"
+      "(no ratings yet)"
     end
   end
 
@@ -44,7 +47,8 @@ class Babysitter < ApplicationRecord
     bookings.each do |booking|
       ratings << Review.find_by(booking_id: booking.id).rating if Review.exists?(booking_id: booking.id)
     end
-    if ratings.empty?
+    if ratings.empty? || ratings.nil?
+
       "no ratings yet"
     else
       ratings.sum / ratings.count
