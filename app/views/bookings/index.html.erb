@@ -55,7 +55,7 @@
             <p>You have <%= pluralize(confirmed_bookings.count, 'booking') %> pending with <%= @babysitter.user.first_name %> for</p>
             <ul>
               <% confirmed_bookings.each do |c_booking| %>
-                <li><%= c_booking.start_time.strftime("%d %B %Y") %> from <%= c_booking.start_time.strftime("%H:%M") %> until <%= (c_booking.start_time + p_booking.duration_per_hour.hours).strftime("%H:%M") %></li>
+                <li><%= c_booking.start_time.strftime("%d %B %Y") %> from <%= c_booking.start_time.strftime("%H:%M") %> until <%= (c_booking.start_time + c_booking.duration_per_hour.hours).strftime("%H:%M") %></li>
               <% end %>
             </ul>
           <% elsif booking.status == "completed" && booking.babysitter_id == @babysitter.id %>
@@ -63,7 +63,7 @@
             <p>You have <%= pluralize(completed_bookings.count, 'booking') %> pending with <%= @babysitter.user.first_name %> for</p>
             <ul>
               <% completed_bookings.each do |c_booking| %>
-                <li><%= c_booking.start_time.strftime("%d %B %Y") %> from <%= c_booking.start_time.strftime("%H:%M") %> until <%= (c_booking.start_time + p_booking.duration_per_hour.hours).strftime("%H:%M") %></li>
+                <li><%= c_booking.start_time.strftime("%d %B %Y") %> from <%= c_booking.start_time.strftime("%H:%M") %> until <%= (c_booking.start_time + c_booking.duration_per_hour.hours).strftime("%H:%M") %></li>
               <% end %>
             </ul>
           <% elsif booking.nil? %>

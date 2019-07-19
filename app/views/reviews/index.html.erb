@@ -34,7 +34,7 @@
   <% booking.reviews.each do |review| %>
     <div class="container">
       <div class="card-product">
-        <%= image_tag review.booking.user.avatar || "avatar-default.png" %>
+        <%= image_tag review.booking.user.avatar.url || "avatar-default.png" %>
         <div class="card-product-infos">
           <div class="text">
             <div class="bs-info">
