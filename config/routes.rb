@@ -12,4 +12,8 @@ Rails.application.routes.draw do
   resources :bookings, only: [] do
     resources :reviews, only: [:new, :create]
   end
+
+  as :user do
+    get 'users', :to => 'babysitters#index', :as => :user_root
+  end
 end
