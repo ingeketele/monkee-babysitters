@@ -87,7 +87,7 @@
   <% @bookings.each do |booking| %>
   <div class="card-product">
   <%= link_to babysitter_path(booking.babysitter) do %>
-    <%= image_tag booking.babysitter.user.avatar || "avatar-default.png" %>
+    <%= image_tag booking.babysitter.user.avatar.url || "avatar-default.png" %>
   <% end %>
     <div class="card-product-infos">
       <div class="text">
