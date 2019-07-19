@@ -11,8 +11,14 @@ class Babysitter < ApplicationRecord
   after_validation :set_coordinates, on: :create
 
   delegate :address, to: :user
+  delegate :first_name, to: :user
+  delegate :last_name, to: :user
 
   geocoded_by :address
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 
   def self.find_by_name(query)
     joins(:user).where("users.first_name ILIKE :query OR users.last_name ILIKE :query", query: "#{query}%")
