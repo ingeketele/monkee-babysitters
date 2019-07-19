@@ -32,6 +32,10 @@ class Babysitter < ApplicationRecord
     bookings.each do |booking|
       ratings << Review.find_by(booking_id: booking.id).rating if Review.exists?(booking_id: booking.id)
     end
-    ratings.sum / ratings.count
+    if ratings.empty?
+      "no ratings yet"
+    else
+      ratings.sum / ratings.count
+    end
   end
 end

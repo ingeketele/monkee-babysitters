@@ -14,7 +14,7 @@
         <%= link_to babysitter_path(babysitter) do %>
         <div class="card">
           <div class="avatar-text-center">
-            <img class="avatar-xtra-large" alt="avatar-large" src="<%= babysitter.user.avatar %>" />
+            <%= image_tag babysitter.user.avatar.url, class: "avatar-xtra-large" %>
           </div>
 
           <div class="card-body">
@@ -29,7 +29,7 @@
             </div>
 
             <div class="ratings">
-              <%= babysitter.stars %>
+              <%= babysitter.stars || "no ratings yet" %>
             </div>
           </div>
         </div>
