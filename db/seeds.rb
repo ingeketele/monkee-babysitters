@@ -250,6 +250,141 @@ Booking.create!({
   status: "completed"
 })
 
+Booking.create!({
+  user_id: User.find_by(first_name:'Jens').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Magne').id).id,
+  start_time: "2019-07-18 20:00:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name:'Bjorn').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Marius').id).id,
+  start_time: "2019-07-15 18:00:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name: 'Kjetil').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Leif').id).id,
+  start_time: "2019-07-19 17:00:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name: 'Knut').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Kåre').id).id,
+  start_time: "2019-07-08 19:30:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name: 'Lars').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Bente').id).id,
+  start_time: "2019-07-12 18:30:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name: 'Anders').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Anne').id).id,
+  start_time: "2019-07-18 20:00:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name:'Marit').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Kåre').id).id,
+  start_time: "2019-07-15 18:00:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name: 'Astrid').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Leif').id).id,
+  start_time: "2019-07-19 17:00:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name: 'Berit').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Marius').id).id,
+  start_time: "2019-07-08 19:30:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name: 'Bente').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Magne').id).id,
+  start_time: "2019-07-12 18:30:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name:'Aslaug').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Lars').id).id,
+  start_time: "2019-07-18 20:00:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name:'Camilla').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Knut').id).id,
+  start_time: "2019-07-15 18:00:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name: 'Grete').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Kjetil').id).id,
+  start_time: "2019-07-19 17:00:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name: 'Jorunn').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Bjorn').id).id,
+  start_time: "2019-07-08 19:30:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
+Booking.create!({
+  user_id: User.find_by(first_name: 'Ragnhild').id,
+  babysitter_id: Babysitter.find_by(user_id: User.find_by(first_name: 'Jens').id).id,
+  start_time: "2019-07-12 18:30:00".to_datetime,
+  duration_per_hour: 3,
+  price_per_hour: babysitter.price_per_hour,
+  status: "completed"
+})
+
 puts "Finished!"
 
 
