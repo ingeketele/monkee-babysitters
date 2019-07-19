@@ -49,8 +49,6 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
-    bootstrap-daterangepicker-rails (3.0.3)
-      railties (>= 4.0, < 5.3)
     builder (3.2.3)
     byebug (11.0.1)
     coderay (1.1.2)
@@ -223,7 +221,6 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootsnap
-  bootstrap-daterangepicker-rails
   devise
   dotenv-rails
   faker
