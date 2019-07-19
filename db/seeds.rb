@@ -13,7 +13,7 @@ cities.each do |city|
     address: "#{city}",
     email: Faker::Internet.email,
     password: Faker::Internet.password,
-    avatar: 'https://source.unsplash.com/360x360/?face'
+    remote_avatar_url: 'https://source.unsplash.com/360x360/?face'
   })
 end
 

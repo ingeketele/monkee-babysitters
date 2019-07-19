@@ -1,7 +1,7 @@
 <div class="card-top">
 
   <div class="profile-header">
-      <%= image_tag @user.avatar || "avatar-default.png", class: "avatar-xtra-large" %>
+      <%= image_tag @user.avatar.url || "avatar-default.png", class: "avatar-xtra-large" %>
     <div class="user-name">
       <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
       <%= link_to " (edit profile)", edit_user_registration_path %>
@@ -64,7 +64,7 @@
     <div class="container">
       <%= link_to babysitter_path(booking.babysitter) do %>
       <div class="card-product">
-        <%= image_tag booking.babysitter.user.avatar || "avatar-default.png" %>
+        <%= image_tag booking.babysitter.user.avatar.url || "avatar-default.png" %>
         <div class="card-product-infos">
           <div class="text">
             <div class="bs-info">
